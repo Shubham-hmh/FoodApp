@@ -72,7 +72,7 @@ const Home = () => {
                                     <hr />
 
                                     {foodItem !==[]? 
-                                    foodItem.filter((item)=>(item.categoryname===data.categoryname)  &&(item.name.toLowerCase().includes(search.toLocaleLowerCase())))
+                                   foodItem && foodItem.filter((item)=>(item.categoryname===data.categoryname)  &&(item.name.toLowerCase().includes(search.toLocaleLowerCase())))
                                     .map(filterItems=>{
                                         return(
                                             <div key={filterItems._id} className="col-12 col-md-6 col-lg-3">
