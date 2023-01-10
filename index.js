@@ -2,7 +2,7 @@ const express= require('express');
 const mongoose=require("mongoose");
 
 const app =express();
-const port =5000
+const port = process.env.PORT || 5000
 const path =require("path");
 
 const mongoDBconnect =require('./db');
@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname,'./frontend/build')));
 app.get('*',function(req,res){
     res.sendFile(path.join(__dirname,'./frontend/build/index.html'));
 });
-app.listen(process.env.PORT || port,()=>{
+app.listen( port,()=>{
     console.log(`backend is running on port ${port}`);
 })
 
