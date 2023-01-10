@@ -63,7 +63,7 @@ const Home = () => {
             <div className='container'>
                 {
                     foodCat !== []
-                        ? foodCat.map((data) => {
+                        ? foodCat && foodCat.map((data) => {
                             return (
                                 <div className='row mb-3'>
                                     <div key={data._id} className="fs-3 m-3">
