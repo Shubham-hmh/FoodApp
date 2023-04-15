@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import Nav from '../components/Nav';
 
 const Home = () => {
-    const [search ,setSearch]=useState("");
+    const [search, setSearch] = useState("");
     const [foodCat, setfoodCat] = useState([]);
     const [foodItem, setfoodItem] = useState([]);
 
@@ -33,11 +33,11 @@ const Home = () => {
     return (
         <>
             <div><Navbar /></div>
-            <div> <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel" style={{objectFit: "contain !important"}}>
+            <div> <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel" style={{ objectFit: "contain !important" }}>
                 <div className="carousel-inner" id='carousel'>
                     <div className="carousel-caption" style={{ zIndex: "10" }}>
                         <div className="d-flex justify-content-center" >
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e)=>{setSearch(e.target.value)}}/>
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e) => { setSearch(e.target.value) }} />
                             <button className="btn btn-outline-success text-white bg-success" type="submit">Search</button>
                         </div>
                     </div>
@@ -61,7 +61,9 @@ const Home = () => {
                 </button>
             </div></div>
             <div className='container'>
+      
                 {
+                 
                     foodCat !== []
                         ? foodCat && foodCat.map((data) => {
                             return (
@@ -71,19 +73,19 @@ const Home = () => {
                                     </div>
                                     <hr />
 
-                                    {foodItem !==[]? 
-                                   foodItem && foodItem.filter((item)=>(item.categoryname===data.categoryname)  &&(item.name.toLowerCase().includes(search.toLocaleLowerCase())))
-                                    .map(filterItems=>{
-                                        return(
-                                            <div key={filterItems._id} className="col-12 col-md-6 col-lg-3">
-                                                <Card  foodItem={filterItems}
-                                                options={filterItems.options[0]}
-                                                // imgSrc={filterItems.img}
-                                                ></Card>
-                                            </div>
-                                        )
-                                    })
-                                    :<div>No such data found</div>}
+                                    {foodItem !== [] ?
+                                        foodItem && foodItem.filter((item) => (item.categoryname === data.categoryname) && (item.name.toLowerCase().includes(search.toLocaleLowerCase())))
+                                            .map(filterItems => {
+                                                return (
+                                                    <div key={filterItems._id} className="col-12 col-md-6 col-lg-3">
+                                                        <Card foodItem={filterItems}
+                                                            options={filterItems.options[0]}
+                                                        // imgSrc={filterItems.img}
+                                                        ></Card>
+                                                    </div>
+                                                )
+                                            })
+                                        : <div>No such data found</div>}
                                 </div>
                             )
                         })
@@ -91,7 +93,7 @@ const Home = () => {
                 }
 
             </div>
-        
+
             <hr />
 
             <div><Footer /></div>
